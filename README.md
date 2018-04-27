@@ -22,6 +22,6 @@
 - **Differential expression analysis**: DESeq
 - **GO annotation**: BLAST2GO
 - **GO enrichment**: topGO 
--**Pathway analysis**: KEGG annotation
+- **Pathway analysis**: KEGG annotation
 
   
