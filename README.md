@@ -14,3 +14,14 @@
 - **Age**: 8-12 days
 - **Bacterial exposure**: Probiotics *Bacillus pumilus* RI-0695, *Phaeobacter inhibens* S4 and pathogen *Vibrio coraliillyticus* RE22
 - **Time of exposure**: 6, 24 hours 
+
+##Pipeline for transcriptome data analysis follows steps below: 
+- **QC**: FASTQC, BBTools 
+- **Alignment**: HISAT2
+- **Assembly**: Stringtie
+- **Differential expression analysis**: DESeq
+- **GO annotation**: BLAST2GO
+- **GO enrichment**: topGO 
+-**Pathway analysis**: KEGG annotation
+
+  
