@@ -62,8 +62,7 @@ if echo "${RUN_STEP}" | grep -qw "merge" ; then
 
     # generate the merge list
     ls -1 "${OUT_DIR}"/*.gtf > "${OUT_DIR}"/mergelist.txt
-
- 	run_with_logging "merge" stringtie --merge -G ${GENOME_GFF_FILE} -o "$MERGED_GTF" "$MERGELIST"
+    run_with_logging "merge" stringtie --merge -G ${GENOME_GFF_FILE} -o "$MERGED_GTF" "$MERGELIST"
 fi
 #----------------------------------------------------------------------------
 #Re-estimate transcript abundance after merge step
