@@ -4,24 +4,8 @@
 #SBATCH --output="qc_fastqc_out.%A-%a"
 #SBATCH --error="qc_fastqc_out.%A-%a"
 
-function die() {
-    echo "ERROR: $*" >&2
-    exit 1
-}
-
-function verify_module_installed() {
-    # this function verifies that `module` is installed and that FastQC/0.11.5-... is available
-    if ! module avail FastQC | grep -qw FastQC ; then
-        die "FastQC module is needed"
-    fi
-}
-
-function mandate_slurm_array_use() {
-    if [ -z "$SLURM_ARRAY_TASK_ID" ] ; then
-        # -z means the variable is empty
-        die "qc_fastqc.sh needs to be run via slurm as an array task"
-    fi
-}
+SCRIPT=${0##*/}  # removes everything until the farthest / from the left - ie basename
+. "$SCRIPT"/functions.sh    # . is shorthand for "source"
 
 if [ ! -d "$SRA_DIR" ]; then
     # ! -d means its not a valid directory
@@ -34,8 +18,7 @@ files=(
     $(ls -1 "$SRA_DIR"/*.fq)
 )
 
-verify_module_installed
-
+verify_module_installed FastQC
 mandate_slurm_array_use
 
 set -e 
