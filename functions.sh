@@ -28,8 +28,9 @@ function get_paired_sra_files() {
     # $1 will be the directory containing _1.fastq and _2.fastq SRA files
     # only those that have both _1 and _2 will be selected
 
+    local suffix="$2"
     local file file2
-    for file in $(ls -1 "$1"/*_1.fastq); do 
+    for file in $(ls -1 "$1"/*_1.${suffix}); do 
         file2=$(echo ${file}|sed s/_1/_2/)
         if [ -f "${file2}" ] ; then
             # if _2 exists, then echo the basename of _1 file

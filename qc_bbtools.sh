@@ -24,7 +24,7 @@ fi
 
 FILES=(
     _
-    $( get_paired_sra_files "$SRA_DIR" )
+    $( get_paired_sra_files "$SRA_DIR" "fastq" )
 )
 
 
