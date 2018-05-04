@@ -6,7 +6,8 @@
 #SBATCH --error="qc_bbtools_out.%A-%a"
 
 SCRIPT=${0##*/}  # removes everything until the farthest / from the left - ie basename
-. "$SCRIPT"/functions.sh    # . is shorthand for "source"
+DIR="${0%/*}"      # shorthand for dirname
+. "${DIR}"/functions.sh    # . is shorthand for "source"
 
 verify_module_installed BBMAP
 mandate_slurm_array_use

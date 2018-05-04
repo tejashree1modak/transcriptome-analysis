@@ -5,7 +5,8 @@
 #SBATCH --error="qc_fastqc_out.%A-%a"
 
 SCRIPT=${0##*/}  # removes everything until the farthest / from the left - ie basename
-. "$SCRIPT"/functions.sh    # . is shorthand for "source"
+DIR="${0%/*}"      # shorthand for dirname
+. "${DIR}"/functions.sh    # . is shorthand for "source"
 
 if [ ! -d "$SRA_DIR" ]; then
     # ! -d means its not a valid directory

@@ -10,7 +10,8 @@
 # This script requires SRA_DIR, OUT_DIR and GENOME_FILE to be set
 
 SCRIPT=${0##*/}  # removes everything until the farthest / from the left - ie basename
-. "$SCRIPT"/functions.sh    # . is shorthand for "source"
+DIR="${0%/*}"      # shorthand for dirname
+. "${DIR}"/functions.sh    # . is shorthand for "source"
 
 verify_module_installed HISAT2
 verify_module_installed SAMtools
@@ -50,7 +51,7 @@ fi
 
 # ------------------------------------------------------------------------------------------
 # hisat2 align paired end reads to reference genome
-if [ "${RUN_STEP}" == "hisat" ] ; then
+if echo "${RUN_STEP}" | grep -qw "hisat" ; then
     left_file="$SRA_DIR/${FILES[$SLURM_ARRAY_TASK_ID]}_1.fq"
     right_file=$(echo ${left_file}|sed s/_1/_2/)
     file=$(basename ${left_file%_1.fq}) 
