@@ -10,7 +10,7 @@ Scripts to analyze transcriptomic data produced to study the response of Eastern
 |**Bacterial exposure**|Probiotic Bacillus pumilus RI-0695|Probiotics *Bacillus pumilus* RI-0695, *Phaeobacter inhibens* S4 and pathogen *Vibrio coraliillyticus* RE22|
 |**Time of exposure**|5, 12 and 16 days| 6, 24 hours|
 
-## Pipeline for transcriptome data analysis follows steps below:
+### Pipeline for transcriptome data analysis follows steps below:
 | Step | Pipelines |
 | :- | :- |
 | QC | [FASTQC](#FASTQC) and [BBTools](#BBTools)| 
@@ -21,6 +21,7 @@ Scripts to analyze transcriptomic data produced to study the response of Eastern
 | GO enrichment | topGO  |
 | Pathway analysis | KEGG annotation |
 
+---
   
 ## Pipeline details
 
@@ -29,6 +30,8 @@ Scripts to analyze transcriptomic data produced to study the response of Eastern
 The QC pipeline supports to scripts - 
 
 #### FASTQC
+
+---
 
 #### BBTools 
   - The [qc_bbtools](qc_bbtools.sh) script contains the pipeline for BBTools 
@@ -55,6 +58,8 @@ The QC pipeline supports to scripts -
 | quality_trim | |
 | force_trim_right | |
 
+---
+
 ### Alignment 
 
 Alignment pipeline supports the following scripts - 
@@ -66,3 +71,5 @@ Alignment pipeline supports the following scripts -
     - To speed up processing of large jobs, this script requires the jobs to be submitted as [array jobs](https://slurm.schedmd.com/job_array.html)
   - _Input Parameters_:
     - The following paremeters should be set using the `--export=<variable>=<value>` notation of SLURM
+
+---
