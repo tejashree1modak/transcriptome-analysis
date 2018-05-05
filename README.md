@@ -58,6 +58,35 @@ The QC pipeline supports to scripts -
 | quality_trim | |
 | force_trim_right | |
 
+  - Example: assume that there are 4 paired SRA files under `/path/to/sra` directory like this - 
+
+```shell
+$ cd /path/to
+$ tree sra
+sra
+├── fileA_1.fastq
+├── fileA_2.fastq
+├── fileB_1.fastq
+├── fileB_2.fastq
+├── fileC_1.fastq
+├── fileC_2.fastq
+├── fileD_1.fastq
+└── fileD_2.fastq
+```
+
+  - Run the pipeline
+
+```shell  
+# to run stat and force_trim steps
+sbatch -a 1-4 --export=RUN_STEP=stat:force_trim --export=SRA_DIR=/path/to/sra \
+        --export=OUT_DIR=/path/to/out qc_bbtools.sh
+        
+# to run just adapter trim step
+sbatch -a 1-4 --export=RUN_STEP=adapter_trim --export=SRA_DIR=/path/to/sra \
+        --export=OUT_DIR=/path/to/out qc_bbtools.sh
+ ```
+ 
+   - This will generate the output in `OUT_DIR` and the SLURM out files are stored in current directory
 ---
 
 ### Alignment 
