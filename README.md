@@ -13,8 +13,8 @@ Scripts to analyze transcriptomic data produced to study the response of Eastern
 ### Pipeline for transcriptome data analysis follows steps below:
 | Step | Pipelines |
 | :- | :- |
-| QC | [FASTQC](#FASTQC) and [BBTools](#BBTools)| 
-| Alignment| [HISAT2](#HISAT2) |
+| QC | [FASTQC](#fastqc) and [BBTools](#bbtools)| 
+| Alignment| [HISAT2](#hisat2) |
 | Assembly|  Stringtie |
 | Differential expression analysis| DESeq |
 | GO annotation | BLAST2GO|
