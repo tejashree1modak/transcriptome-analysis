@@ -100,5 +100,61 @@ Alignment pipeline supports the following scripts -
     - To speed up processing of large jobs, this script requires the jobs to be submitted as [array jobs](https://slurm.schedmd.com/job_array.html)
   - _Input Parameters_:
     - The following paremeters should be set using the `--export=<variable>=<value>` notation of SLURM
+    - hisat
 
 ---
+### Assembly 
+
+Assembly pipeline supports the following scripts - 
+
+#### Stringtie
+  - The [assembly_stringtie](assembly_stringtie.sh) script contains the pipeline for assembly
+    - _Usage_: 
+    - [SLURM](https://slurm.schedmd.com/) is required to run this script
+    - To speed up processing of large jobs, this script requires the jobs to be submitted as [array jobs](https://slurm.schedmd.com/job_array.html) for some steps.
+  - _Input Parameters_:
+    - The following paremeters should be set using the `--export=<variable>=<value>` notation of SLURM
+    - assembly, merge, reestimate
+  - Running the last step in this pipeline will generate the count matrices that can be used to perform differential    expression analysis. 
+   
+---
+### Differential expression 
+
+This script is in R and uses DESeq to obtain DEGs from the counts file obtained from stringtie
+
+#### DESeq
+
+- THe [deseq_pipe](deseq_pipe.R) script contains the pipeline for 
+  - PCA analysis 
+  - DEGs
+- It takes as input two files
+  - Count matrix file
+  - Pheno data: This is a csv file with metadata for the samples
+  
+---
+### GO annotation 
+
+#### blast2GO needs to be run locally
+
+- Download [blast2GO](https://www.blast2go.com/) 
+- Load fasta file of DEGs
+- Choose using Blast first 
+- Mapping to GO IDs
+- Export results 
+
+---
+### GO enrichment 
+
+GO enrichment will allow us to see significantly enriched GO terms 
+
+#### topGO 
+
+This piipeline runs the Classic Fisher test to find significantly enriched GO terms
+- It takes as input: 
+  - A tab separated file containing all the genes with the mapped GO IDs one per line 
+  - Interesting genes file with p values from DESeq. 
+- It will output a csv file with GO terms and the p values after running the Fishers test. 
+- You can use this data to generate a figure of enriched GO terms in [REVIGO](http://revigo.irb.hr/)
+
+---
+    
