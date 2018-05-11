@@ -19,7 +19,7 @@ Scripts to analyze transcriptomic data produced to study the response of Eastern
 | Differential expression analysis| DESeq |
 | GO annotation | BLAST2GO|
 | GO enrichment | topGO  |
-| Pathway analysis | KEGG annotation |
+| Pathway mapping | KEGG annotation |
 
 ---
   
@@ -157,4 +157,17 @@ This piipeline runs the Classic Fisher test to find significantly enriched GO te
 - You can use this data to generate a figure of enriched GO terms in [REVIGO](http://revigo.irb.hr/)
 
 ---
-    
+### Pathway mapping  
+
+The online annotation tool KAAS can be used  
+
+#### KAAS annotation server for KO mapping
+- This server can be used to first map the DEGs to KO IDs [KAAS](http://www.genome.jp/tools/kaas/)
+  - Upload a fasta file of the DEGs. If uploading in nucleotide form select nucleiotide in the form.
+  - Choose organism to map to from the provided list
+  - Submit job. 
+- Use [KEGG mapper](http://www.genome.jp/kegg/tool/map_pathway.html) to observe KO mapping directly on color coded pathways. Can show upregulated and downregulated genes in different color using this tool. 
+
+---
+
+
